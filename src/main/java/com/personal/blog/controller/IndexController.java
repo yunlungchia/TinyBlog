@@ -12,6 +12,4 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     private static final Logger log = LoggerFactory.getLogger(IndexController.class);
-
-    public Result<>
 }
