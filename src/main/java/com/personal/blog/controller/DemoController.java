@@ -1,26 +1,26 @@
 package com.personal.blog.controller;
 
 import com.personal.blog.constant.Urls;
+import com.personal.blog.service.IUserService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @RestController
-public class DisplayController {
+public class DemoController {
 
 
     @Autowired
     @Qualifier(value = "okHttpClient")
     private OkHttpClient okHttpClient;
 
+    @Autowired
+    IUserService userService;
 
     @RequestMapping(value = "/display/{id}", method = RequestMethod.GET)
     public String displayContent(@PathVariable("id") int id) throws IOException {
@@ -39,5 +39,10 @@ public class DisplayController {
         try (Response response = okHttpClient.newCall(request).execute()) {
             return response.body().string();
         }
+    }
+
+    @GetMapping("/test")
+    public String get() {
+        return userService.getUserInfoById(1L).getAddress();
     }
 }

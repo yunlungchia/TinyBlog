@@ -5,6 +5,7 @@ import com.personal.blog.po.User;
 import com.personal.blog.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author YunLung Chia
@@ -17,9 +18,15 @@ public class UserService implements IUserService {
     UserMapper userMapper;
 
     @Override
-    public User selectByPrimaryKey(Long id){
-        User user = userMapper.selectByPrimaryKey(id);
+    public User getUserInfoById(Long id) {
+        User user = userMapper.selectById(id);
         return user;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void updateUserInfo(User user) {
+        userMapper.updataUserInfo(user);
     }
 
 

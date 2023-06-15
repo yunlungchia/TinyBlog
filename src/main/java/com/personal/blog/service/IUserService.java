@@ -8,5 +8,7 @@ import com.personal.blog.po.User;
  */
 public interface IUserService {
 
-    User selectByPrimaryKey(Long id);
+    User getUserInfoById(Long id);
+
+    void updateUserInfo(User user);
 }
