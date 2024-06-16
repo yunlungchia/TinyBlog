@@ -2,6 +2,7 @@ package com.personal.blog.controller;
 
 import com.personal.blog.constant.Urls;
 import com.personal.blog.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
+@Slf4j
+@RequestMapping("/demo")
 public class DemoController {
 
 
@@ -43,6 +46,8 @@ public class DemoController {
 
     @GetMapping("/test")
     public String get() {
-        return userService.getUserInfoById(1L).getAddress();
+        String res = userService.getUserInfoById(1L).getAddress();
+        log.info(res);
+        return res;
     }
 }

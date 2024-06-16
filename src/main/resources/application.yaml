@@ -4,7 +4,6 @@ server:
 # datasource
 spring:
   datasource:
-    name: mysql_test
     type: com.alibaba.druid.pool.DruidDataSource
     # druid相关配置
     druid:
@@ -14,7 +13,7 @@ spring:
       # 基本属性
       url: jdbc:mysql://localhost:3306/tinyblog
       username: root
-      password: 12345678
+      password: a12345678
       # 配置初始化大小/最小/最大
       initial-size: 1
       min-idle: 1
